@@ -110,6 +110,16 @@ function blogunan_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	register_sidebar( array(
+		'name'          => esc_html__( 'Sidebar Search', 'blogunan' ),
+		'id'            => 'sidebar-search',
+		'description'   => esc_html__( 'This Sidebar will appear on search results.', 'blogunan' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
 }
 add_action( 'widgets_init', 'blogunan_widgets_init' );
 
@@ -118,6 +128,8 @@ add_action( 'widgets_init', 'blogunan_widgets_init' );
  */
 function blogunan_scripts() {
 	wp_enqueue_style( 'blogunan-style', get_stylesheet_uri() );
+
+	wp_enqueue_style('custom-style', get_template_directory_uri() . '/layouts/custom.css');
 
 	wp_enqueue_script( 'blogunan-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
